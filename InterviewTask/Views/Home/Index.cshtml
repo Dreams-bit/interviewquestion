@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+    <style>
+        /* Custom CSS to remove border and box shadow from list-group-item */
+        .list-group-item {
+            border: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Interview Task</h3>
+                <!-- tabs -->
+                <div class="tabbable tabs-left">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+                        <li><a href="#about" data-toggle="tab">Profile</a></li>
+                        <li><a href="#services" data-toggle="tab">Message</a></li>
+                        <li><a href="#contact" data-toggle="tab">Setting</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home">
+                            <div class="">
+                                <h1>Home Tab</h1>
+                                <div class="container" style="box-shadow:0 0 10px rgba(0, 0, 0, 0.1); background-color: #E9E9E9; border-radius: 3px">
+                                    <div class="row mt-4">
+                                        <!-- Tree Structure Column -->
+                                        <div class="col-md-2">
+                                            <!-- Tree Structure Menu -->
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    Country
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                            USA
+                                                            <a class="collapsed" role="button" data-toggle="collapse" href="#grandchildren-usa" aria-expanded="false" aria-controls="grandchildren-usa">
+                                                                <span class="caret"></span>
+                                                            </a>
+                                                            <ul class="list-group collapse" id="grandchildren-usa">
+                                                                <li class="list-group-item" onclick="showTable('New York')">New York</li>
+                                                                <li class="list-group-item" onclick="showTable('California')">California</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            Canada
+                                                            <a class="collapsed" role="button" data-toggle="collapse" href="#grandchildren-canada" aria-expanded="false" aria-controls="grandchildren-canada">
+                                                                <span class="caret"></span>
+                                                            </a>
+                                                            <ul class="list-group collapse" id="grandchildren-canada">
+                                                                <li class="list-group-item" onclick="showTable('Toronto')">Ontario</li>
+                                                                <li class="list-group-item" onclick="showTable('Quebec')">Quebec</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="list-group-item" onclick="showTable('Malaysia')">Malaysia</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- Table Content Column -->
+                                        <div class="col-md-10">
+                                            <table class="table table-sm" id="info-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Address</th>
+                                                        <th>City</th>
+                                                        <th>Pin Code</th>
+                                                        <th>Country</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="text-center">
+                                                        <td colspan="6" >Select country on the left.</td>
+                                                    </tr>
+                                                    <!-- Add more table rows as needed -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div id="modal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close">&times;</span>
+                                                <div id="modal-data"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="about">
+                            <div class="">
+                                <h1>Login Form</h1>
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleInputUser">User ID</label>
+                                        <input class="form-control" placeholder="Enter username" name="username" id="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword">Password</label>
+                                        <input class="form-control" placeholder="Enter password" name="password" id="password">
+                                    </div>
+                                    <input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" />
+                                    <div class="mt-4">
+                                        Show Input Form Data
+                                        <table class="table">
+                                            <tr>
+                                                <th>User ID</th>
+                                                <td id="userID"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Password</th>
+                                                <td id="pss"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="services">
+                            <div class="">
+                                <h1>Message Tab</h1>
+                                <p>meant to identify articles which deserve editor attention because they are the most important for an encyclopedia to have, as determined by the community of participating editors. They may also be of interest to readers as an alternative to lists of overview articles.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="contact">
+                            <div class="">
+                                <h1>Setting Tab</h1>
+                                <p>deserve editor attention because they are the most important for an encyclopedia to have, as determined by the community of participating editors. They may also be of interest to readers as an alternative to lists of overview articles.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /tabs -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //Home Tab
+        function showTable(city) {
+
+            var countryData = [
+                {
+                    "city": "New York",
+                    "name": "Tabby",
+                    "address": "New York City",
+                    "pincode": "05000",
+                    "country": "USA"
+                },
+                {
+                    "name": "Marcus",
+                    "address": "New York City",
+                    "city": "New York",
+                    "pincode": "05000",
+                    "country": "USA"
+                },
+                {
+                    "city": "California",
+                    "name": "Marcus",
+                    "address": "California Street",
+                    "pincode": "15236",
+                    "country": "USA"
+                },
+                {
+                    "name": "Marcus",
+                    "address": "California Street",
+                    "city": "California",
+                    "pincode": "15236",
+                    "country": "USA"
+                },
+                {
+                    "name": "Toretto",
+                    "address": "Toronto Street",
+                    "city": "Toronto",
+                    "pincode": "63256",
+                    "country": "Canada"
+                },
+                {
+                    "name": "Walker",
+                    "address": "Toronto Street",
+                    "city": "Toronto",
+                    "pincode": "63256",
+                    "country": "Canada"
+                },
+                {
+                    "name": "Ali Zainal",
+                    "address": "Kuala Lumpur",
+                    "city": "Malaysia",
+                    "pincode": "08000",
+                    "country": "Malaysia"
+                }
+            ];
+
+            // Get the table and tbody elements
+            var table = document.getElementById("info-table");
+            var tbody = table.querySelector("tbody");
+
+            // Clear the existing rows from the table
+            tbody.innerHTML = "";
+
+            var cityData = countryData.find(function (item) {
+                return item.city === city;
+            });
+
+
+            var editIconTable = document.createElement("i");
+            editIconTable.className = "fas fa-edit";
+
+            var viewIconTable = document.createElement("i");
+            viewIconTable.className = "fa fa-eye";
+
+            var deleteIconTable = document.createElement("i");
+            deleteIconTable.className = "fa fa-trash";
+
+            viewIconTable.addEventListener("click", function () {
+                // Call a function to show the view form
+                showViewForm(cityData);
+            });
+
+            if (cityData) {
+                // Create a new row and cells
+                var row = document.createElement("tr");
+                var cell1 = document.createElement("td");
+                var cell2 = document.createElement("td");
+                var cell3 = document.createElement("td");
+                var cell4 = document.createElement("td");
+                var cell5 = document.createElement("td");
+                var cell6 = document.createElement("td");
+
+
+                // Set the cell values with the city data
+                cell1.textContent = cityData.name;
+                cell2.textContent = cityData.address;
+                cell3.textContent = cityData.city;
+                cell4.textContent = cityData.pincode;
+                cell5.textContent = cityData.country;
+                cell6.appendChild(editIconTable);
+                cell6.appendChild(viewIconTable);
+                cell6.appendChild(deleteIconTable);
+
+                // Append the cells to the row and the row to the tbody
+                row.appendChild(cell1);
+                row.appendChild(cell2);
+                row.appendChild(cell3);
+                row.appendChild(cell4);
+                row.appendChild(cell5);
+                row.appendChild(cell6);
+                tbody.appendChild(row);
+            }else{
+                var row = document.createElement("tr");
+                var cell = document.createElement("td");
+                cell.textContent = "No data available.";
+                cell.colSpan = 6;
+                cell.className = "text-center";
+                row.appendChild(cell);
+                tbody.appendChild(row);
+            }
+        }
+
+        function showViewForm(tableData) {
+            var message = "Table Data Form\n";
+            for (var key in tableData) {
+                if (tableData.hasOwnProperty(key)) {
+                    message += key.toLocaleUpperCase() + ": " + tableData[key] + "\n";
+                }
+            }
+            alert(message);
+        }
+
+
+        //Profile Tab
+        $(document).ready(function () {
+            $('#submitBtn').click(function () {
+                $('#userID').text($('#username').val());
+                $('#pss').text($('#password').val());
+            });
+
+            $('#submit').click(function () {
+                $('#form1').submit();
+            });
+        });
+    </script>
+</body>
+</html>
